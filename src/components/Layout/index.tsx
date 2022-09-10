@@ -1,16 +1,19 @@
 import { ReactElement, useEffect } from "react";
+import { themeChange } from "theme-change";
+
 import Navbar from "components/Navbar";
 import Sidebar from "components/Sidebar";
-import { themeChange } from "theme-change";
 
 type LayoutProps = Required<{
   readonly children: ReactElement;
 }>;
 
 const Layout = ({ children }: LayoutProps) => {
+
   useEffect(() => {
     themeChange(false);
   }, []);
+
   return (
     <div className="drawer drawer-mobile">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
