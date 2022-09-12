@@ -1,6 +1,8 @@
-import type { NextPage } from "next";
+import Layout from "components/Layout";
+import type { NextPageWithLayout } from "./_app";
+import type { ReactElement } from "react";
 
-const Home: NextPage = () => {
+const Home: NextPageWithLayout = () => {
   return (
     <div className="space-y-2 md:space-y-6">
       <div className="card card-side bg-base-200 shadow-xl">
@@ -111,6 +113,10 @@ const Home: NextPage = () => {
       </div>
     </div>
   );
+};
+
+Home.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
 };
 
 export default Home;

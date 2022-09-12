@@ -1,4 +1,8 @@
-const Search = () => {
+import Layout from "components/Layout";
+import type { NextPageWithLayout } from "pages/_app";
+import type { ReactElement } from "react";
+
+const Search: NextPageWithLayout = () => {
   return (
     <div className="space-y-2 md:space-y-6">
       <div className="card bg-base-200 shadow-xl">
@@ -146,6 +150,10 @@ const Search = () => {
       </div>
     </div>
   );
+};
+
+Search.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
 };
 
 export default Search;
