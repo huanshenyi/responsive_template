@@ -1,15 +1,18 @@
 import Layout from "components/Layout";
 import type { NextPageWithLayout } from "./_app";
 import type { ReactElement } from "react";
+import Image from "next/image";
 
 const Home: NextPageWithLayout = () => {
   return (
     <div className="space-y-2 md:space-y-6">
       <div className="card card-side bg-base-200 shadow-xl">
         <figure>
-          <img
+          <Image
             src="https://api.lorem.space/image/movie?w=200&amp;h=280"
             alt="Movie"
+            width={200}
+            height={280}
           />
         </figure>
         <div className="card-body">
@@ -47,9 +50,11 @@ const Home: NextPageWithLayout = () => {
       </div>
       <div className="card card-side bg-base-200 shadow-xl">
         <figure>
-          <img
+          <Image
             src="https://api.lorem.space/image/book?w=200&amp;h=280"
             alt="Book"
+            width={200}
+            height={280}
           />
         </figure>
         <div className="card-body">
@@ -85,9 +90,11 @@ const Home: NextPageWithLayout = () => {
       </div>
       <div className="card card-side bg-base-200 shadow-xl">
         <figure>
-          <img
+          <Image
             src="https://api.lorem.space/image/game?w=200&amp;h=280"
             alt="Game"
+            width={200}
+            height={280}
           />
         </figure>
         <div className="card-body">

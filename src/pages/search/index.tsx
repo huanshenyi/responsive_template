@@ -1,6 +1,7 @@
 import Layout from "components/Layout";
 import type { NextPageWithLayout } from "pages/_app";
 import type { ReactElement } from "react";
+import Image from "next/image";
 
 const Search: NextPageWithLayout = () => {
   return (
@@ -48,9 +49,11 @@ const Search: NextPageWithLayout = () => {
                     <div className="flex items-center space-x-3">
                       <div className="avatar">
                         <div className="mask mask-squircle w-12 h-12">
-                          <img
+                          <Image
                             src="https://api.lorem.space/image/face?hash=92310"
                             alt="Avatar Tailwind CSS Component"
+                            width={48}
+                            height={48}
                           />
                         </div>
                       </div>
@@ -71,9 +74,11 @@ const Search: NextPageWithLayout = () => {
                     <div className="flex items-center space-x-3">
                       <div className="avatar">
                         <div className="mask mask-squircle w-12 h-12">
-                          <img
+                          <Image
                             src="https://api.lorem.space/image/face?hash=92310"
                             alt="Avatar Tailwind CSS Component"
+                            width={48}
+                            height={48}
                           />
                         </div>
                       </div>
@@ -113,9 +118,11 @@ const Search: NextPageWithLayout = () => {
                     <div className="flex items-center space-x-3">
                       <div className="avatar">
                         <div className="mask mask-squircle w-12 h-12">
-                          <img
+                          <Image
                             src="https://api.lorem.space/image/face?hash=92310"
                             alt="Avatar Tailwind CSS Component"
+                            width={48}
+                            height={48}
                           />
                         </div>
                       </div>
