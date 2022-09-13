@@ -1,26 +1,34 @@
-import Layout from "components/Layout";
-import type { NextPageWithLayout } from "pages/_app";
-import type { ReactElement } from "react";
-import Image from "next/image";
+import Layout from 'components/Layout';
+import type { NextPageWithLayout } from 'pages/_app';
+import type { ReactElement } from 'react';
+import Image from 'next/image';
+
+import { useTodaysDinnerState, useTodaysDinnerMutators } from 'stores';
 
 const Search: NextPageWithLayout = () => {
+  const { dinnerType } = useTodaysDinnerState();
+  const { setDinner } = useTodaysDinnerMutators();
+
   return (
     <div className="space-y-2 md:space-y-6">
       <div className="card bg-base-200 shadow-xl">
         <div className="card-body">
-          <h1 className="md:text-3xl font-extrabold">Search</h1>
+          <h1 className="md:text-3xl font-extrabold">
+            Search <span suppressHydrationWarning>{dinnerType}</span>
+          </h1>
         </div>
       </div>
       <div className="card bg-base-200 shadow-xl">
         <div className="card-body">
           <div className="form-control">
             <div className="input-group">
-              <input
-                type="text"
-                placeholder="Search…"
-                className="input input-bordered w-full"
-              />
-              <button className="btn btn-square">
+              <input type="text" placeholder="Search…" className="input input-bordered w-full" />
+              <button
+                className="btn btn-square"
+                onClick={() => {
+                  setDinner('Chicken');
+                }}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"
@@ -60,9 +68,8 @@ const Search: NextPageWithLayout = () => {
                       <div>
                         <div className="font-bold">Result with image</div>
                         <div className="text-sm opacity-50">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, sed do eiusmod tempor incididunt ut labore et
-                          dolore magna aliqua.
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                          labore et dolore magna aliqua.
                         </div>
                       </div>
                     </div>
@@ -85,13 +92,10 @@ const Search: NextPageWithLayout = () => {
                       <div>
                         <div className="font-bold">Brice Swyre</div>
                         <div className="text-sm opacity-50 break-words">
-                          Sagittis id consectetur purus ut faucibus pulvinar
-                          elementum integer. Massa sed elementum tempus egestas
-                          sed. Proin sagittis nisl rhoncus mattis rhoncus urna.
-                          Amet volutpat consequat mauris nunc congue nisi vitae
-                          suscipit tellus. Posuere urna nec tincidunt praesent
-                          semper. Elementum pulvinar etiam non quam lacus
-                          suspendisse.
+                          Sagittis id consectetur purus ut faucibus pulvinar elementum integer. Massa sed elementum
+                          tempus egestas sed. Proin sagittis nisl rhoncus mattis rhoncus urna. Amet volutpat consequat
+                          mauris nunc congue nisi vitae suscipit tellus. Posuere urna nec tincidunt praesent semper.
+                          Elementum pulvinar etiam non quam lacus suspendisse.
                         </div>
                       </div>
                     </div>
@@ -104,9 +108,8 @@ const Search: NextPageWithLayout = () => {
                       <div>
                         <div className="font-bold">Marjy Ferencz</div>
                         <div className="text-sm opacity-50">
-                          Sodales ut etiam sit amet nisl purus in mollis nunc.
-                          Suspendisse potenti nullam ac tortor vitae purus. Eu
-                          mi bibendum neque egestas congue quisque egestas diam.
+                          Sodales ut etiam sit amet nisl purus in mollis nunc. Suspendisse potenti nullam ac tortor
+                          vitae purus. Eu mi bibendum neque egestas congue quisque egestas diam.
                         </div>
                       </div>
                     </div>
@@ -129,13 +132,10 @@ const Search: NextPageWithLayout = () => {
                       <div>
                         <div className="font-bold">Yancy Tear</div>
                         <div className="text-sm opacity-50">
-                          Sagittis id consectetur purus ut faucibus pulvinar
-                          elementum integer. Massa sed elementum tempus egestas
-                          sed. Proin sagittis nisl rhoncus mattis rhoncus urna.
-                          Amet volutpat consequat mauris nunc congue nisi vitae
-                          suscipit tellus. Posuere urna nec tincidunt praesent
-                          semper. Elementum pulvinar etiam non quam lacus
-                          suspendisse.
+                          Sagittis id consectetur purus ut faucibus pulvinar elementum integer. Massa sed elementum
+                          tempus egestas sed. Proin sagittis nisl rhoncus mattis rhoncus urna. Amet volutpat consequat
+                          mauris nunc congue nisi vitae suscipit tellus. Posuere urna nec tincidunt praesent semper.
+                          Elementum pulvinar etiam non quam lacus suspendisse.
                         </div>
                       </div>
                     </div>
