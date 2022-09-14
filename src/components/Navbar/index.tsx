@@ -1,25 +1,17 @@
-import type { NextPage } from "next";
+import type { NextPage } from 'next';
 
 const Navbar: NextPage = () => {
   return (
     <div className="navbar bg-base-100 lg:hidden sticky top-0 w-full z-50">
       <div className="flex-none">
-        <label
-          htmlFor="my-drawer-2"
-          className="btn btn-square btn-ghost lg:hidden"
-        >
+        <label htmlFor="my-drawer-2" className="btn btn-square btn-ghost lg:hidden">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             className="inline-block w-5 h-5 stroke-current"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            ></path>
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         </label>
       </div>
@@ -29,16 +21,8 @@ const Navbar: NextPage = () => {
         </a>
       </div>
       <div className="flex-none">
-        <button
-          data-set-theme="winter"
-          className="btn btn-sm btn-ghost btn-square"
-          data-act-classname="btn-active"
-        >
-          <svg
-            className="inline-block w-4 h-4 fill-current"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512"
-          >
+        <button data-set-theme="winter" className="btn btn-sm btn-ghost btn-square" data-act-classname="btn-active">
+          <svg className="inline-block w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
             <title>ionicons-v5-q</title>
             <path d="M256,118a22,22,0,0,1-22-22V48a22,22,0,0,1,44,0V96A22,22,0,0,1,256,118Z"></path>
             <path d="M256,486a22,22,0,0,1-22-22V416a22,22,0,0,1,44,0v48A22,22,0,0,1,256,486Z"></path>
@@ -51,11 +35,7 @@ const Navbar: NextPage = () => {
             <path d="M256,358A102,102,0,1,1,358,256,102.12,102.12,0,0,1,256,358Z"></path>
           </svg>
         </button>
-        <button
-          data-set-theme="garden"
-          className="btn btn-sm btn-ghost btn-square"
-          data-act-classname="btn-active"
-        >
+        <button data-set-theme="garden" className="btn btn-sm btn-ghost btn-square" data-act-classname="btn-active">
           <svg
             className="inline-block w-4 h-4 fill-current"
             xmlns="http://www.w3.org/2000/svg"
@@ -71,16 +51,8 @@ const Navbar: NextPage = () => {
             ></path>
           </svg>
         </button>
-        <button
-          data-set-theme="dark"
-          className="btn btn-sm btn-ghost btn-square"
-          data-act-classname="btn-active"
-        >
-          <svg
-            className="inline-block w-4 h-4 fill-current"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512"
-          >
+        <button data-set-theme="dark" className="btn btn-sm btn-ghost btn-square" data-act-classname="btn-active">
+          <svg className="inline-block w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
             <title>ionicons-v5-j</title>
             <path d="M152.62,126.77c0-33,4.85-66.35,17.23-94.77C87.54,67.83,32,151.89,32,247.38,32,375.85,136.15,480,264.62,480c95.49,0,179.55-55.54,215.38-137.85-28.42,12.38-61.8,17.23-94.77,17.23C256.76,359.38,152.62,255.24,152.62,126.77Z"></path>
           </svg>

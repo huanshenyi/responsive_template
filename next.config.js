@@ -1,10 +1,11 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const withInterceptStdout = require('next-intercept-stdout');
+const nextConfig = withInterceptStdout({
   reactStrictMode: true,
   // swcMinify: true,
   images: {
-    domains: ["api.lorem.space"],
+    domains: ['api.lorem.space'],
   },
-};
+});
 
 module.exports = nextConfig;
