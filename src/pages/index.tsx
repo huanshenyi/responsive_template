@@ -1,5 +1,4 @@
 import type { ReactElement } from 'react';
-import { useEffect } from 'react';
 import Image from 'next/image';
 
 import Layout from 'components/Layout';
@@ -7,14 +6,7 @@ import type { NextPageWithLayout } from './_app';
 import { useRecruitments } from 'features/home/api/getRecruitments';
 
 const Home: NextPageWithLayout = () => {
-  const recruitmentQuery = useRecruitments();
-
-  // useEffect(() => {
-  //   const { isError } = recruitmentQuery;
-  //   if (isError) {
-  //     console.log('error message');
-  //   }
-  // });
+  // const recruitmentQuery = useRecruitments();
 
   return (
     <div className="space-y-2 md:space-y-6">
