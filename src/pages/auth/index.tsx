@@ -1,4 +1,9 @@
-const Login = () => {
+import { useAuth } from 'lib/auth';
+import { Notifications } from 'components/Notifications/Notifications';
+
+const Auth = () => {
+  const { login, isLoggingIn } = useAuth();
+  console.log(isLoggingIn);
   return (
     <div>
       <div className="relative min-h-screen  grid bg-black ">
@@ -46,6 +51,9 @@ const Login = () => {
               <div>
                 <button
                   type="submit"
+                  onClick={() => {
+                    login({ username: '', password: '' });
+                  }}
                   className="lg:w-3/5 w-full flex justify-center border-indigo-600 bg-transparent text-gray-100 p-4 border rounded-full tracking-wide font-semibold  focus:outline-none focus:shadow-outline hover:bg-gray-900 shadow-lg cursor-pointer transition ease-in duration-300"
                 >
                   Log in
@@ -59,4 +67,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Auth;

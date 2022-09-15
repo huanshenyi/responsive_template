@@ -2,12 +2,20 @@ import Layout from 'components/Layout';
 import type { NextPageWithLayout } from 'pages/_app';
 import type { ReactElement } from 'react';
 import Image from 'next/image';
+import { useAuth } from 'lib/auth';
+import { useRouter } from 'next/router';
 
 import { useTodaysDinnerState, useTodaysDinnerMutators } from 'stores';
 
 const Search: NextPageWithLayout = () => {
   const { dinnerType } = useTodaysDinnerState();
   const { setDinner } = useTodaysDinnerMutators();
+  const { isLoggingIn } = useAuth();
+  const router = useRouter();
+
+  if (!isLoggingIn) {
+    router.replace('/');
+  }
 
   return (
     <div className="space-y-2 md:space-y-6">
