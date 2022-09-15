@@ -1,11 +1,12 @@
 <div id="top"></div>
-## About The Project
+
+### About The Project
 
 #### Built With
 
-- ![Next.js](https://nextjs.org/)
-- Tailwind CSS
-- ![daisyui](https://daisyui.com/)
+- <a href="https://nextjs.org/" >Next.js </a>
+- <a href="https://tailwindcss.com/">Tailwind CSS </a>
+- <a href="https://daisyui.com/">daisyui</a>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
