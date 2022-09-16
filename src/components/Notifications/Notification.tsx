@@ -1,5 +1,6 @@
 import { Transition } from '@headlessui/react';
-import { Fragment } from 'react';
+import { Fragment, useEffect, useState } from 'react';
+import clsx from 'clsx';
 
 export type NotificationProps = {
   notification: {
@@ -12,6 +13,10 @@ export type NotificationProps = {
 };
 
 export const Notification = ({ notification: { id, type, title, message }, onDismiss }: NotificationProps) => {
+  const [className, setClassName] = useState('alert-info');
+  useEffect(() => {
+    setClassName(`alert-${type}`);
+  }, [type]);
   return (
     <div className="w-full flex flex-col items-center space-y-4 sm:items-end">
       <Transition
@@ -24,7 +29,7 @@ export const Notification = ({ notification: { id, type, title, message }, onDis
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        <div className={`alert alert-${type} shadow-lg`}>
+        <div className={clsx('alert', className, 'shadow-lg')}>
           <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
