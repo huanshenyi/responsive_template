@@ -5,6 +5,8 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import { RecoilRoot } from 'recoil';
 
 import { queryClient } from 'lib/react-query';
+import { AuthProvider } from 'lib/auth';
+import { Spinner } from 'components/Elements';
 
 const ErrorFallback = () => {
   return (
@@ -26,14 +28,16 @@ export const AppProvider = ({ children }: AppProviderProps) => {
     <React.Suspense
       fallback={
         <div className="flex items-center justify-center w-screen h-screen">
-          <div className="animate-spin h-8 w-8 bg-blue-300 rounded-xl"></div>
+          <Spinner size="xl" />
         </div>
       }
     >
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <QueryClientProvider client={queryClient}>
           {<ReactQueryDevtools />}
-          <RecoilRoot>{children}</RecoilRoot>
+          <RecoilRoot>
+            <AuthProvider>{children}</AuthProvider>
+          </RecoilRoot>
         </QueryClientProvider>
       </ErrorBoundary>
     </React.Suspense>

@@ -2,12 +2,14 @@ import Axios, { AxiosRequestConfig } from 'axios';
 
 import { API_URL } from 'config/index';
 import { useNotificationStore } from 'stores';
+import storage from 'utils/storage';
 
 function authRequestInterceptor(config: AxiosRequestConfig) {
-  // const token = storage.getToken();
-  const accessToken = 'token';
+  const token = storage.getToken();
   if (config.headers) {
-    config.headers.authorization = `User ${accessToken}`;
+    if (token) {
+      config.headers.authorization = `User ${token}`;
+    }
     config.headers.Accept = 'application/json';
   }
   return config;

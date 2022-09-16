@@ -1,4 +1,7 @@
-const Login = () => {
+import { useAuth } from 'lib/auth';
+import { Notifications } from 'components/Notifications/Notifications';
+
+const Auth = () => {
   return (
     <div>
       <div className="relative min-h-screen  grid bg-black ">
@@ -59,4 +62,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Auth;
