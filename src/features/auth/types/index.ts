@@ -5,5 +5,5 @@ export type AuthUser = {
 };
 
 export type UserResponse = {
-  jwt: string;
+  token: string;
 };

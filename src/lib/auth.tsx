@@ -13,8 +13,8 @@ import { Spinner } from 'components/Elements';
 import storage from 'utils/storage';
 
 async function handleUserResponse(data: UserResponse) {
-  const { jwt } = data;
-  storage.setToken(jwt);
+  const { token } = data;
+  storage.setToken(token);
   // todo userデータを解析
   const user = {
     id: '',
