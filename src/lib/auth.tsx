@@ -1,4 +1,5 @@
 import { initReactQueryAuth } from 'react-query-auth';
+import jwt_decode from 'jwt-decode';
 
 import {
   loginWithEmailAndPassword,
@@ -11,24 +12,21 @@ import {
 } from 'features/auth';
 import { Spinner } from 'components/Elements';
 import storage from 'utils/storage';
+import { AuthUser as userType } from 'features/auth';
 
 async function handleUserResponse(data: UserResponse) {
   const { token } = data;
   storage.setToken(token);
-  // todo userデータを解析
-  const user = {
-    id: '',
-    username: '',
-    icon: '',
-  };
+  var user = jwt_decode<Omit<userType, 'id'>>(token);
+  console.log('user:', user);
   return user;
 }
 
 async function loadUser() {
-  if (storage.getToken()) {
-    const data = await getUser();
-    return data;
-  }
+  // if (storage.getToken()) {
+  //   const data = await getUser();
+  //   return data;
+  // }
   return null;
 }
 

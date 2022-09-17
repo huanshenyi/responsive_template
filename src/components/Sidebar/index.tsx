@@ -1,7 +1,11 @@
 import type { NextPage } from 'next';
+import { useEffect } from 'react';
 import Link from 'next/link';
+import { useAuth } from 'lib/auth';
 
 const Sidebar: NextPage = () => {
+  const { user } = useAuth();
+
   return (
     <div className="drawer-side">
       <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
@@ -9,11 +13,11 @@ const Sidebar: NextPage = () => {
         <div className="w-fit p-3 lg:m-6 bg-base-100">
           <div className="avatar w-60">
             <div className="w-16 lg:w-32 rounded-full mx-auto">
-              <img src="https://api.lorem.space/image/face?hash=92310" />
+              <img src={user?.icon} />
             </div>
           </div>
 
-          <h1 className="text-2xl p-2 pl-4">Sarissa Blog</h1>
+          <h1 className="text-2xl p-2 pl-4">{user?.username} Blog</h1>
           <p className="text-sm pl-4">Responsive Blog Template</p>
           <div className="flex gap-1 justify-center pt-4">
             <a className="btn btn-sm btn-ghost btn-square">

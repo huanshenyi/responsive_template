@@ -15,7 +15,7 @@ export const Layout = ({ children, title = 'Join Twitter today.' }: LayoutProps)
         <div className="relative min-h-screen  grid bg-black ">
           <div className="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0 ">
             <div
-              className="relative sm:w-1/2 xl:w-3/5 bg-blue-500 h-full hidden md:flex flex-auto items-center justify-center p-10 overflow-hidden  text-white bg-no-repeat bg-cover relative"
+              className="sm:w-1/2 xl:w-3/5 bg-blue-500 h-full hidden md:flex flex-auto items-center justify-center p-10 overflow-hidden  text-white bg-no-repeat bg-cover relative"
               style={{
                 backgroundImage: 'url(https://abs.twimg.com/sticky/illustrations/lohp_en_1302x955.png)',
               }}
