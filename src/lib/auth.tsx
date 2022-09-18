@@ -18,15 +18,14 @@ async function handleUserResponse(data: UserResponse) {
   const { token } = data;
   storage.setToken(token);
   var user = jwt_decode<Omit<userType, 'id'>>(token);
-  console.log('user:', user);
   return user;
 }
 
 async function loadUser() {
-  // if (storage.getToken()) {
-  //   const data = await getUser();
-  //   return data;
-  // }
+  if (storage.getToken()) {
+    const data = await getUser();
+    return data;
+  }
   return null;
 }
 

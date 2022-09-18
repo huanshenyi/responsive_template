@@ -8,9 +8,11 @@ function authRequestInterceptor(config: AxiosRequestConfig) {
   const token = storage.getToken();
   if (config.headers) {
     if (token) {
-      config.headers.authorization = `User ${token}`;
+      config.headers['X-Token'] = `User ${token}`;
     }
-    config.headers.Accept = 'application/json';
+    if (config.method && ['post'].includes(config.method)) {
+      config.headers.Accept = 'application/json';
+    }
   }
   return config;
 }

@@ -17,8 +17,8 @@ const Sidebar: NextPage = () => {
             </div>
           </div>
 
-          <h1 className="text-2xl p-2 pl-4">{user?.username} Blog</h1>
-          <p className="text-sm pl-4">Responsive Blog Template</p>
+          <h1 className="text-2xl p-2 pl-4">{user?.username}</h1>
+          <p className="text-sm pl-4">{user?.appeal}</p>
           <div className="flex gap-1 justify-center pt-4">
             <a className="btn btn-sm btn-ghost btn-square">
               <svg

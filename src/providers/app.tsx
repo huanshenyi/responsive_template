@@ -7,6 +7,7 @@ import { RecoilRoot } from 'recoil';
 import { queryClient } from 'lib/react-query';
 import { AuthProvider } from 'lib/auth';
 import { Spinner } from 'components/Elements';
+import { Notifications } from 'components/Notifications/Notifications';
 
 const ErrorFallback = () => {
   return (
@@ -36,7 +37,10 @@ export const AppProvider = ({ children }: AppProviderProps) => {
         <QueryClientProvider client={queryClient}>
           {<ReactQueryDevtools />}
           <RecoilRoot>
-            <AuthProvider>{children}</AuthProvider>
+            <AuthProvider>
+              <Notifications />
+              {children}
+            </AuthProvider>
           </RecoilRoot>
         </QueryClientProvider>
       </ErrorBoundary>
