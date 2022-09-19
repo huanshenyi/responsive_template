@@ -54,6 +54,7 @@ export const Notification = ({ notification: { id, type, title, message }, onDis
               onClick={() => {
                 onDismiss(id);
               }}
+              className="cursor-pointer"
             >
               x
             </div>
