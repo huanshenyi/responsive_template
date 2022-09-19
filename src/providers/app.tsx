@@ -37,10 +37,8 @@ export const AppProvider = ({ children }: AppProviderProps) => {
         <QueryClientProvider client={queryClient}>
           {<ReactQueryDevtools />}
           <RecoilRoot>
-            <AuthProvider>
-              <Notifications />
-              {children}
-            </AuthProvider>
+            <Notifications />
+            <AuthProvider>{children}</AuthProvider>
           </RecoilRoot>
         </QueryClientProvider>
       </ErrorBoundary>
