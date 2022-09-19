@@ -50,7 +50,7 @@ export const LoginForm = ({ login, onSuccess, isLoggingIn }: LoginFormProps) => 
               <Button
                 isLoading={isLoggingIn}
                 type="submit"
-                className="lg:w-3/5 w-full flex justify-center border-indigo-600 bg-transparent text-gray-100 p-4 border rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-gray-900 shadow-lg cursor-pointer transition ease-in duration-300"
+                className="lg:w-3/5 w-full flex justify-center dark:bg-sky-500 dark:text-white border-indigo-600 bg-transparent p-4 border rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline shadow-lg cursor-pointer transition ease-in duration-300"
               >
                 Log in
               </Button>
@@ -58,7 +58,7 @@ export const LoginForm = ({ login, onSuccess, isLoggingIn }: LoginFormProps) => 
             <div className="lg:w-3/5">
               <button
                 type="button"
-                className="flex break-inside bg-[#2ea44f] text-white border-2 border-transparent rounded-3xl px-6 py-3 mb-4 w-full"
+                className="flex break-inside dark:bg-slate-800  dark:text-white border-2 border-transparent rounded-3xl px-6 py-3 mb-4 w-full"
               >
                 <div className="m-auto">
                   <div className="flex items-center justify-start flex-1 space-x-4">
@@ -76,7 +76,7 @@ export const LoginForm = ({ login, onSuccess, isLoggingIn }: LoginFormProps) => 
             <div className="lg:w-3/5">
               <button
                 type="button"
-                className="flex break-inside bg-white text-black border-2 border-black rounded-3xl px-6 py-3 mb-4 w-full dark:bg-slate-800 dark:text-white"
+                className="flex break-inside  text-black border-2 border-black rounded-3xl px-6 py-3 mb-4 w-full dark:bg-red-700 dark:text-white"
               >
                 <div className="m-auto">
                   <div className="flex items-center justify-start flex-1 space-x-4">

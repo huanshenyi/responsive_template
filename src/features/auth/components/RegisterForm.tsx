@@ -1,4 +1,3 @@
-import { Switch } from '@headlessui/react';
 import * as React from 'react';
 import * as z from 'zod';
 import Link from 'next/link';
@@ -23,9 +22,15 @@ type RegisterFormProps = {
 
 export const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
   const { register, isRegistering } = useAuth();
-  const [chooseTeam, setChooseTeam] = React.useState(false);
+  const [chooseTeam, setChooseTeam] = React.useState<boolean>(false);
   const [choosePrivacy, setChoosePrivacy] = React.useState(false);
 
+  const handelChangeChooseTeam = () => {
+    setChooseTeam((state) => !state);
+  };
+  const handelChangeChoosePrivacy = () => {
+    setChoosePrivacy((state) => !state);
+  };
   return (
     <div>
       <Form<RegisterValues, typeof schema>
@@ -56,58 +61,51 @@ export const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
               registration={register('password')}
               className="lg:w-3/5"
             />
-
-            <Switch.Group>
-              <div className="flex items-center">
-                <Switch
-                  checked={chooseTeam}
-                  onChange={setChooseTeam}
-                  className={`${
-                    chooseTeam ? 'bg-blue-600' : 'bg-gray-200'
-                  } relative inline-flex items-center h-6 rounded-full w-11 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
-                >
-                  <span
-                    className={`${
-                      chooseTeam ? 'translate-x-6' : 'translate-x-1'
-                    } inline-block w-4 h-4 transform bg-white rounded-full transition-transform`}
+            <div className="flex items-center">
+              <div className="form-control">
+                <label className="label cursor-pointer">
+                  <input
+                    type="checkbox"
+                    className="toggle"
+                    checked={chooseTeam}
+                    onClick={() => {
+                      handelChangeChooseTeam();
+                    }}
                   />
-                </Switch>
-                <Switch.Label className="ml-4">
-                  <Link href="terms">
-                    <a className="text-sky-600">利用契約</a>
-                  </Link>
-                  利用契約に同意
-                </Switch.Label>
+                  <span className="pl-3 label-text">
+                    <Link href="terms">
+                      <a className="text-sky-600">利用契約</a>
+                    </Link>
+                    利用契約に同意
+                  </span>
+                </label>
               </div>
-            </Switch.Group>
-            <Switch.Group>
-              <div className="flex items-center">
-                <Switch
-                  checked={choosePrivacy}
-                  onChange={setChoosePrivacy}
-                  className={`${
-                    choosePrivacy ? 'bg-blue-600' : 'bg-gray-200'
-                  } relative inline-flex items-center h-6 rounded-full w-11 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
-                >
-                  <span
-                    className={`${
-                      choosePrivacy ? 'translate-x-6' : 'translate-x-1'
-                    } inline-block w-4 h-4 transform bg-white rounded-full transition-transform`}
+            </div>
+            <div className="flex items-center">
+              <div className="form-control">
+                <label className="label cursor-pointer">
+                  <input
+                    type="checkbox"
+                    className="toggle"
+                    checked={choosePrivacy}
+                    onClick={() => {
+                      handelChangeChoosePrivacy();
+                    }}
                   />
-                </Switch>
-                <Switch.Label className="ml-4">
-                  <Link href="terms">
-                    <a className="text-sky-600">プライバシーポリシー</a>
-                  </Link>
-                  に同意する
-                </Switch.Label>
+                  <span className="pl-3 label-text">
+                    <Link href="terms">
+                      <a className="text-sky-600">プライバシーポリシー</a>
+                    </Link>
+                    に同意する
+                  </span>
+                </label>
               </div>
-            </Switch.Group>
+            </div>
             <div>
               <Button
                 isLoading={isRegistering}
                 type="submit"
-                className="lg:w-3/5 w-full flex justify-center border-indigo-600 bg-transparent text-gray-100 p-4 border rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-gray-900 shadow-lg cursor-pointer transition ease-in duration-300"
+                className="lg:w-3/5 w-full flex justify-center border-indigo-600 bg-transparent dark:bg-sky-500 dark:text-white p-4 border rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline shadow-lg cursor-pointer transition ease-in duration-300"
               >
                 Register
               </Button>
