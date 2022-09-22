@@ -68,12 +68,12 @@ export const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
                     type="checkbox"
                     className="toggle"
                     checked={chooseTeam}
-                    onClick={() => {
+                    onChange={() => {
                       handelChangeChooseTeam();
                     }}
                   />
                   <span className="pl-3 label-text">
-                    <Link href="terms">
+                    <Link href="/info/terms">
                       <a className="text-sky-600">利用契約</a>
                     </Link>
                     利用契約に同意
@@ -88,12 +88,12 @@ export const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
                     type="checkbox"
                     className="toggle"
                     checked={choosePrivacy}
-                    onClick={() => {
+                    onChange={() => {
                       handelChangeChoosePrivacy();
                     }}
                   />
                   <span className="pl-3 label-text">
-                    <Link href="terms">
+                    <Link href="/info/privacy">
                       <a className="text-sky-600">プライバシーポリシー</a>
                     </Link>
                     に同意する
