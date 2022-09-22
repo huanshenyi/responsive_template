@@ -2,6 +2,7 @@ export type AuthUser = {
   id?: string;
   username: string;
   icon: string;
+  group?: string;
   email?: string;
   sex?: number;
   livingArea?: string;
