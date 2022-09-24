@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
-const withInterceptStdout = require('next-intercept-stdout');
-const nextConfig = withInterceptStdout({
+const nextConfig = {
   reactStrictMode: true,
   // swcMinify: true,
   images: {
@@ -9,6 +8,7 @@ const nextConfig = withInterceptStdout({
   env: {
     REACT_APP_API_URL: process.env.REACT_APP_API_URL,
   },
-});
-
-module.exports = nextConfig;
+};
+const withInterceptStdout = require('next-intercept-stdout');
+const removeImports = require('next-remove-imports')();
+module.exports = withInterceptStdout(removeImports(nextConfig));
