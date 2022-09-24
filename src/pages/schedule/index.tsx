@@ -7,8 +7,8 @@ import { useAuth } from 'lib/auth';
 
 const Schedule: NextPageWithLayout = () => {
   const router = useRouter();
-  const { isLoggingIn } = useAuth();
-  if (!isLoggingIn) {
+  const { user } = useAuth();
+  if (!user) {
     router.replace('/auth');
   }
   return (
