@@ -21,7 +21,7 @@ export const Layout = ({ children, title = 'プライバシーポリシー' }: L
 
   return (
     <div className="relative min-h-screen grid">
-      <section className="bg-white dark:bg-gray-900">
+      <section className="">
         <div className="container px-6 py-12 mx-auto">
           <h1 className="text-2xl font-semibold text-center text-gray-800 lg:text-4xl dark:text-white">{title}</h1>
           <div className="mt-8 xl:mt-16 lg:flex lg:-mx-12">
