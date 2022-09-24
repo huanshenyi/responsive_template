@@ -1,11 +1,13 @@
 import type { NextPage } from 'next';
-import { useEffect } from 'react';
 import Link from 'next/link';
 import { useAuth } from 'lib/auth';
 
 const Sidebar: NextPage = () => {
-  const { user } = useAuth();
-
+  const { user, logout } = useAuth();
+  const handelClickLogout = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    event.preventDefault();
+    logout();
+  };
   return (
     <div className="drawer-side">
       <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
@@ -160,23 +162,45 @@ const Sidebar: NextPage = () => {
                 </Link>
               </li>
               <li>
-                <a href="./archive.html">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
-                    ></path>
-                  </svg>
-                  Archive
-                </a>
+                {user !== null ? (
+                  <a href="#" onClick={handelClickLogout}>
+                    <svg
+                      className="w-6 h-6"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                      ></path>
+                    </svg>
+                    Logout
+                  </a>
+                ) : (
+                  <Link href={'/auth'}>
+                    <a>
+                      <svg
+                        className="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                        ></path>
+                      </svg>
+                      login
+                    </a>
+                  </Link>
+                )}
               </li>
               <div className="divider"></div>
               <li className="hidden lg:block">
