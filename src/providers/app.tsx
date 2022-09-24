@@ -8,6 +8,7 @@ import { queryClient } from 'lib/react-query';
 import { AuthProvider } from 'lib/auth';
 import { Spinner } from 'components/Elements';
 import { Notifications } from 'components/Notifications/Notifications';
+import { NODE_ENV } from 'config';
 
 const ErrorFallback = () => {
   return (
@@ -35,7 +36,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
     >
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <QueryClientProvider client={queryClient}>
-          {<ReactQueryDevtools />}
+          {NODE_ENV !== 'prod' && <ReactQueryDevtools />}
           <RecoilRoot>
             <Notifications />
             <AuthProvider>{children}</AuthProvider>

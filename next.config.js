@@ -7,6 +7,7 @@ const nextConfig = {
   },
   env: {
     REACT_APP_API_URL: process.env.REACT_APP_API_URL,
+    ENVIRONMENT: process.env.ENVIRONMENT,
   },
 };
 const withInterceptStdout = require('next-intercept-stdout');
