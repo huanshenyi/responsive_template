@@ -9,6 +9,32 @@ export type Recruitment = {
   paid: boolean;
   reward: string;
   memberLimit: number;
-  type: string;
-  tags: string[];
+  type: RecruitmentType;
+  created: string;
+  tags: any[];
+  owner: {
+    id: number;
+    userName: string;
+    icon: string;
+  };
 } & BaseEntity;
+
+export type Owner = {
+  icon: string;
+  userName: string;
+} & BaseEntity;
+
+export type RecruitmentOwner = {
+  owner: Owner;
+  recruitment: Recruitment;
+};
+
+export type Recruitments = {
+  recruitments: RecruitmentOwner[];
+  totalCount: number;
+  totalPage: number;
+};
+
+export const RECRUITMENT = 'recruitment';
+export const FREETIME = 'freetime';
+export type RecruitmentType = typeof RECRUITMENT | typeof FREETIME;
