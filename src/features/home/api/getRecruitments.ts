@@ -41,6 +41,7 @@ export const useRecruitments = ({ page, limit, tag, type = RECRUITMENT, config }
     queryKey: ['home/getRecruitments', page, limit, tag],
     queryFn: () => getRecruitments({ page, limit, tag, type }),
     staleTime: 3000,
+    keepPreviousData: true,
     ...config,
   });
 };
