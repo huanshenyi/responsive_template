@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fullcalendar/daygrid": "^5.11.3",
+    "@fullcalendar/interaction": "^5.11.3",
+    "@fullcalendar/react": "^5.11.2",
+    "@fullcalendar/timegrid": "^5.11.3",
     "@headlessui/react": "^1.7.2",
     "@hookform/resolvers": "^2.9.8",
     "@uiw/react-md-editor": "^3.18.1",
@@ -21,6 +25,7 @@
     "next": "12.3.0",
     "next-intercept-stdout": "^1.0.1",
     "next-remove-imports": "^1.0.7",
+    "next-transpile-modules": "^9.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-error-boundary": "^3.1.4",

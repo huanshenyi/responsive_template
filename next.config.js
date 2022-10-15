@@ -10,6 +10,11 @@ const nextConfig = {
     ENVIRONMENT: process.env.ENVIRONMENT,
   },
 };
+const withTM = require('next-transpile-modules')([
+  '@fullcalendar/common',
+  '@fullcalendar/daygrid',
+  '@fullcalendar/react',
+]);
 const withInterceptStdout = require('next-intercept-stdout');
 const removeImports = require('next-remove-imports')();
-module.exports = withInterceptStdout(removeImports(nextConfig));
+module.exports = withTM(withInterceptStdout(removeImports(nextConfig)));
