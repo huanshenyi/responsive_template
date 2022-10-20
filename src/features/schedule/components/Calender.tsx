@@ -1,10 +1,15 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import { EventInput } from '@fullcalendar/react';
 import interactionPlugin, { DateClickArg, EventDragStartArg } from '@fullcalendar/interaction';
 import timeGridPlugin from '@fullcalendar/timegrid';
 
-export const Calender = () => {
+type CalenderProps = {
+  eventList: EventInput[];
+};
+
+export const Calender = ({ eventList }: CalenderProps) => {
   const handleDateClick = useCallback((arg: DateClickArg) => {
     console.log(arg);
   }, []);
@@ -12,6 +17,7 @@ export const Calender = () => {
   const handleEventClick = useCallback((arg: EventDragStartArg) => {
     console.log(arg);
   }, []);
+
   return (
     <>
       <FullCalendar
@@ -26,7 +32,6 @@ export const Calender = () => {
         initialEvents={[{ title: 'initial event', start: new Date() }]}
         dateClick={handleDateClick}
         eventClick={handleEventClick}
-        displayEventEnd
         businessHours={true}
         editable={true}
         eventDisplay="block"
@@ -48,6 +53,8 @@ export const Calender = () => {
           week: '週',
           day: '日',
         }}
+        eventSources={[eventList]}
+        displayEventEnd
       />
     </>
   );
