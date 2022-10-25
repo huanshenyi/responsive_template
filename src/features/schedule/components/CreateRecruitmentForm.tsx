@@ -8,11 +8,19 @@ type RecruitmentModalProps = {};
 const schema = z.object({
   title: z.string().min(1, 'Required'),
   place: z.string().min(1, 'Required'),
+  start: z.string(),
+  end: z.string(),
+  content: z.string().min(1, 'Required'),
+  reward: z.string().min(1, 'Required'),
 });
 
 type createValues = {
   title: string;
   place: string;
+  start: string;
+  end: string;
+  content: string;
+  reward: string;
 };
 
 export const CreateRecruitmentForm = ({}: RecruitmentModalProps) => {
@@ -42,6 +50,34 @@ export const CreateRecruitmentForm = ({}: RecruitmentModalProps) => {
               label="place"
               error={formState.errors['place']}
               registration={register('place')}
+              className="lg:w-3/5 m-auto"
+            />
+            <InputField
+              type="time"
+              label="start"
+              error={formState.errors['start']}
+              registration={register('start')}
+              className="lg:w-3/5 m-auto"
+            />
+            <InputField
+              type="time"
+              label="end"
+              error={formState.errors['end']}
+              registration={register('end')}
+              className="lg:w-3/5 m-auto"
+            />
+            <InputField
+              type="text"
+              label="content"
+              error={formState.errors['content']}
+              registration={register('content')}
+              className="lg:w-3/5 m-auto"
+            />
+            <InputField
+              type="text"
+              label="reward"
+              error={formState.errors['reward']}
+              registration={register('reward')}
               className="lg:w-3/5 m-auto"
             />
             <div>

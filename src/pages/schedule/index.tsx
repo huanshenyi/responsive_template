@@ -13,12 +13,11 @@ import { MY_RECRUITMENT_COLOR, JOINED_RECRUITMENT_COLOR } from 'config';
 const Schedule: NextPageWithLayout = () => {
   const { data, isLoading, isError } = useMyJoinRecruitments();
   const [addFormOpen, setAddFormOpen] = useState(false);
-  const [formTitle, setFormTitle] = useState<string>('');
+  const [formTitle, setFormTitle] = useState<string>('募集追加');
   const myRecruitmentsStore = useMyRecruitments();
 
   const handelOpenModal = () => {
     setAddFormOpen((value) => !value);
-    setFormTitle('');
   };
 
   const handelSetFormTitle = (value: string) => {
