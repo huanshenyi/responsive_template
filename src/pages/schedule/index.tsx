@@ -1,6 +1,7 @@
 import type { ReactElement } from 'react';
 import { EventInput } from '@fullcalendar/react';
 import { useState } from 'react';
+import { DateClickArg, EventDragStartArg } from '@fullcalendar/interaction';
 
 import { Calender, useMyJoinRecruitments, useMyRecruitments, CreateRecruitmentForm } from 'features/schedule';
 import { Modal } from 'components/Modal';
@@ -15,6 +16,8 @@ const Schedule: NextPageWithLayout = () => {
   const [addFormOpen, setAddFormOpen] = useState(false);
   const [formTitle, setFormTitle] = useState<string>('募集追加');
   const myRecruitmentsStore = useMyRecruitments();
+  const [selectedDate, setSelectedDate] = useState<DateClickArg>();
+  const [selectedEvent, setSelectedEvent] = useState<EventDragStartArg>();
 
   const handelOpenModal = () => {
     setAddFormOpen((value) => !value);
@@ -22,6 +25,16 @@ const Schedule: NextPageWithLayout = () => {
 
   const handelSetFormTitle = (value: string) => {
     setFormTitle(value);
+  };
+
+  const handelSetSelectedDate = (arg: DateClickArg) => {
+    setSelectedDate(arg);
+    console.log('dataclick:', arg);
+  };
+
+  const handelSetSelectEvent = (arg: EventDragStartArg) => {
+    setSelectedEvent(arg);
+    console.log('Eventclick:', arg);
   };
 
   if (isLoading || myRecruitmentsStore.isLoading) {
@@ -65,11 +78,17 @@ const Schedule: NextPageWithLayout = () => {
       </div>
       <div className="card bg-base-200 shadow-xl">
         <div className="card-body">
-          <Calender eventList={evevtList} handelOpenModal={handelOpenModal} handelSetFormTitle={handelSetFormTitle} />
+          <Calender
+            eventList={evevtList}
+            handelOpenModal={handelOpenModal}
+            handelSetFormTitle={handelSetFormTitle}
+            handelSetSelectedDate={handelSetSelectedDate}
+            handelSetSelectedEvent={handelSetSelectEvent}
+          />
         </div>
       </div>
       <Modal title={formTitle} isOpen={addFormOpen} handelOpenModal={handelOpenModal}>
-        <CreateRecruitmentForm />
+        <CreateRecruitmentForm selectedDate={selectedDate} />
       </Modal>
     </div>
   );

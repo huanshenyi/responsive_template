@@ -10,17 +10,25 @@ type CalenderProps = {
   eventList: EventInput[];
   handelOpenModal: () => void;
   handelSetFormTitle: (value: string) => void;
+  handelSetSelectedDate: (arg: DateClickArg) => void;
+  handelSetSelectedEvent: (arg: EventDragStartArg) => void;
 };
 
-export const Calender = ({ eventList, handelOpenModal, handelSetFormTitle }: CalenderProps) => {
+export const Calender = ({
+  eventList,
+  handelOpenModal,
+  handelSetFormTitle,
+  handelSetSelectedDate,
+  handelSetSelectedEvent,
+}: CalenderProps) => {
   const handleDateClick = useCallback((arg: DateClickArg) => {
-    console.log(arg);
+    handelSetSelectedDate(arg);
     handelSetFormTitle('募集追加');
     handelOpenModal();
   }, []);
 
   const handleEventClick = useCallback((arg: EventDragStartArg) => {
-    console.log(arg);
+    handelSetSelectedEvent(arg);
     handelSetFormTitle('募集詳細');
     handelOpenModal();
   }, []);
