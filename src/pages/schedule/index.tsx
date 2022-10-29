@@ -1,7 +1,10 @@
 import type { ReactElement } from 'react';
 import { EventInput } from '@fullcalendar/react';
+import { useState } from 'react';
+import { DateClickArg, EventDragStartArg } from '@fullcalendar/interaction';
 
-import { Calender, useMyJoinRecruitments, useMyRecruitments } from 'features/schedule';
+import { Calender, useMyJoinRecruitments, useMyRecruitments, CreateRecruitmentForm } from 'features/schedule';
+import { Modal } from 'components/Modal';
 import { Spinner } from 'components/Elements';
 import Layout from 'components/Layout';
 import type { NextPageWithLayout } from 'pages/_app';
@@ -10,7 +13,32 @@ import { MY_RECRUITMENT_COLOR, JOINED_RECRUITMENT_COLOR } from 'config';
 
 const Schedule: NextPageWithLayout = () => {
   const { data, isLoading, isError } = useMyJoinRecruitments();
+  const [addFormOpen, setAddFormOpen] = useState(false);
+  const [formTitle, setFormTitle] = useState<string>('募集追加');
   const myRecruitmentsStore = useMyRecruitments();
+  const [selectedDate, setSelectedDate] = useState<DateClickArg>();
+  const [selectedEvent, setSelectedEvent] = useState<EventDragStartArg>();
+
+  const handelOpenModal = () => {
+    setAddFormOpen((value) => !value);
+  };
+
+  const handelSetFormTitle = (value: string) => {
+    setFormTitle(value);
+  };
+
+  const handelSetSelectedDate = (arg: DateClickArg) => {
+    setSelectedDate(arg);
+  };
+
+  const handelSetSelectEvent = (arg: EventDragStartArg) => {
+    setSelectedEvent(arg);
+    console.log('Eventclick:', arg);
+  };
+
+  const handelCreateSuccess = () => {
+    setAddFormOpen((value) => !value);
+  };
 
   if (isLoading || myRecruitmentsStore.isLoading) {
     return (
@@ -53,31 +81,18 @@ const Schedule: NextPageWithLayout = () => {
       </div>
       <div className="card bg-base-200 shadow-xl">
         <div className="card-body">
-          <div className="flex justify-end">
-            <div className="badge badge-xs mr-1" style={{ backgroundColor: MY_RECRUITMENT_COLOR }}>
-              <span className="text-white">予定</span>
-            </div>
-            <div className="badge badge-xs" style={{ backgroundColor: JOINED_RECRUITMENT_COLOR }}>
-              <span className="text-white">応募内容</span>
-            </div>
-          </div>
-          <Calender eventList={evevtList} />
-          <div className="overflow-x-auto w-full">
-            <table className="table-normal w-full">
-              <td>
-                <div className="flex items-center space-x-3">
-                  <div>
-                    <div className="text-sm opacity-50 text-transparent">
-                      sample sample sample sample sample sample sample sample sample. sample sample sample sample sample
-                      sample.
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </table>
-          </div>
+          <Calender
+            eventList={evevtList}
+            handelOpenModal={handelOpenModal}
+            handelSetFormTitle={handelSetFormTitle}
+            handelSetSelectedDate={handelSetSelectedDate}
+            handelSetSelectedEvent={handelSetSelectEvent}
+          />
         </div>
       </div>
+      <Modal title={formTitle} isOpen={addFormOpen} handelOpenModal={handelOpenModal}>
+        <CreateRecruitmentForm selectedDate={selectedDate} handelCreateSuccess={handelCreateSuccess} />
+      </Modal>
     </div>
   );
 };

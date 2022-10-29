@@ -34,7 +34,7 @@ type UseMyRecruitmentsOptions = {
 
 export const useMyRecruitments = ({ page, limit, type, config = {} }: UseMyRecruitmentsOptions = {}) => {
   return useQuery<ExtractFnReturnType<QueryFnType>>({
-    queryKey: ['schedele/getMyRecruitments', page, limit, type],
+    queryKey: ['recruitment', page, limit, type],
     queryFn: () => getMyRecruitments({ page, limit, type }),
     staleTime: Infinity,
     ...config,

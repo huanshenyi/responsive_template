@@ -10,8 +10,8 @@ export type Recruitment = {
   reward: string;
   memberLimit: number;
   type: RecruitmentType;
-  created: string;
-  tags: any[];
+  created?: string;
+  tags?: any[];
   owner: {
     id: number;
     userName: string;
