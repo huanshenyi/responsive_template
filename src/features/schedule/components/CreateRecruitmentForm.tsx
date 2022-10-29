@@ -9,6 +9,7 @@ import { useCreateRecruitment, RecruitmentType, RECRUITMENT, FREETIME } from 'fe
 
 type RecruitmentModalProps = {
   selectedDate: DateClickArg | undefined;
+  handelCreateSuccess: () => void;
 };
 
 const schema = z.object({
@@ -34,14 +35,21 @@ type createValues = {
   memberLimit: number;
 };
 
-export const CreateRecruitmentForm = ({ selectedDate }: RecruitmentModalProps) => {
+export const CreateRecruitmentForm = ({ selectedDate, handelCreateSuccess }: RecruitmentModalProps) => {
   const [slectedDay, setSlectedDay] = useState<string>();
   const createRecruitment = useCreateRecruitment();
+
   useEffect(() => {
     if (selectedDate) {
       setSlectedDay(formatDay(selectedDate.dateStr));
     }
   }, [selectedDate]);
+
+  useEffect(() => {
+    if (createRecruitment.isSuccess) {
+      handelCreateSuccess();
+    }
+  }, [createRecruitment.isSuccess]);
   return (
     <>
       <Form<createValues, typeof schema>

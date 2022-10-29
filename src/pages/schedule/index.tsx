@@ -29,12 +29,15 @@ const Schedule: NextPageWithLayout = () => {
 
   const handelSetSelectedDate = (arg: DateClickArg) => {
     setSelectedDate(arg);
-    console.log('dataclick:', arg);
   };
 
   const handelSetSelectEvent = (arg: EventDragStartArg) => {
     setSelectedEvent(arg);
     console.log('Eventclick:', arg);
+  };
+
+  const handelCreateSuccess = () => {
+    setAddFormOpen((value) => !value);
   };
 
   if (isLoading || myRecruitmentsStore.isLoading) {
@@ -88,7 +91,7 @@ const Schedule: NextPageWithLayout = () => {
         </div>
       </div>
       <Modal title={formTitle} isOpen={addFormOpen} handelOpenModal={handelOpenModal}>
-        <CreateRecruitmentForm selectedDate={selectedDate} />
+        <CreateRecruitmentForm selectedDate={selectedDate} handelCreateSuccess={handelCreateSuccess} />
       </Modal>
     </div>
   );
