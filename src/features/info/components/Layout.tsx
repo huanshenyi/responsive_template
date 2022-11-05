@@ -4,8 +4,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import clsx from 'clsx';
 
-import { useAuth } from 'lib/auth';
-
 type LayoutProps = {
   children: React.ReactNode;
   title: string;
@@ -16,7 +14,6 @@ export const Layout = ({ children, title = 'プライバシーポリシー' }: L
     themeChange(false);
   }, []);
 
-  const { user } = useAuth();
   const router = useRouter();
 
   return (

@@ -1,4 +1,4 @@
-import type { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { EventInput } from '@fullcalendar/react';
 import { useState } from 'react';
 import { DateClickArg, EventDragStartArg } from '@fullcalendar/interaction';
