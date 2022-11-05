@@ -2,10 +2,10 @@ import * as z from 'zod';
 import { DateClickArg } from '@fullcalendar/interaction';
 
 import { Button } from 'components/Elements';
-import { Form, InputField, TextAreaField, SelectField } from 'components/Form';
+import { Form, InputField, TextAreaField, SelectField, ComboboxField } from 'components/Form';
 import { useEffect, useState } from 'react';
 import { formatDay, formatTime, getAfterHalfHour, formatISOTime } from 'utils/format';
-import { useCreateRecruitment, RecruitmentType, RECRUITMENT, FREETIME } from 'features/schedule';
+import { useCreateRecruitment, RecruitmentType, RECRUITMENT, FREETIME, useTags } from 'features/schedule';
 
 type RecruitmentModalProps = {
   selectedDate: DateClickArg | undefined;
@@ -20,7 +20,7 @@ const schema = z.object({
   content: z.string().min(1, 'Required'),
   reward: z.string(),
   memberLimit: z.number().gte(1).lte(10),
-  // tags: z.array(z.string().min(1)).optional(),
+  tags: z.array(z.string().min(1).max(3)).optional(),
 });
 
 type createValues = {
@@ -33,11 +33,14 @@ type createValues = {
   type: RecruitmentType;
   paid: boolean;
   memberLimit: number;
+  tags: number[];
 };
 
 export const CreateRecruitmentForm = ({ selectedDate, handelCreateSuccess }: RecruitmentModalProps) => {
   const [slectedDay, setSlectedDay] = useState<string>();
+  const [tags, setTags] = useState<number[]>([]);
   const createRecruitment = useCreateRecruitment();
+  const { data } = useTags();
 
   useEffect(() => {
     if (selectedDate) {
@@ -50,6 +53,12 @@ export const CreateRecruitmentForm = ({ selectedDate, handelCreateSuccess }: Rec
       handelCreateSuccess();
     }
   }, [createRecruitment.isSuccess]);
+
+  // TODO: 苦渋な選択、いつかは直す
+  const handelGetTags = (values: number[]) => {
+    setTags(Array.from(new Set(values)));
+  };
+
   return (
     <>
       <Form<createValues, typeof schema>
@@ -57,6 +66,8 @@ export const CreateRecruitmentForm = ({ selectedDate, handelCreateSuccess }: Rec
           values.start = formatISOTime(slectedDay + ' ' + values.start);
           values.end = formatISOTime(slectedDay + ' ' + values.end);
           values.paid = !!values.reward;
+          values.tags = tags;
+          // console.log(values);
           await createRecruitment.mutateAsync({ data: values });
         }}
         schema={schema}
@@ -132,6 +143,13 @@ export const CreateRecruitmentForm = ({ selectedDate, handelCreateSuccess }: Rec
               error={formState.errors['reward']}
               registration={register('reward')}
               className="lg:w-3/5 m-auto"
+            />
+            <ComboboxField
+              label="タグ選択"
+              registration={register('tags')}
+              className="lg:w-3/5 m-auto"
+              options={data ? data : []}
+              handelLinkData={handelGetTags}
             />
             <div>
               <Button
