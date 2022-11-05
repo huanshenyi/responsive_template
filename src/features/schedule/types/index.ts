@@ -1,4 +1,5 @@
 import { BaseEntity } from 'types';
+import { number } from 'zod';
 
 export type Recruitment = {
   title: string;
@@ -44,3 +45,11 @@ export type Recruitments = {
 export const RECRUITMENT = 'recruitment';
 export const FREETIME = 'freetime';
 export type RecruitmentType = typeof RECRUITMENT | typeof FREETIME;
+
+export type Tag = {
+  id: number;
+  name: string;
+  status: number;
+};
+
+export type Tags = Tag[];
