@@ -45,7 +45,7 @@ export const Pagination = ({
             onClick={() => {
               handleClickNextPage();
             }}
-            disabled={currentPage > totalPage}
+            disabled={currentPage === totalPage}
           >
             <svg
               className="w-5 h-5"
